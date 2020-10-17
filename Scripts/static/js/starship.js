@@ -1,6 +1,5 @@
-d3.csv('../static/data/starships.csv').then(data => {
+d3.csv('static/data/starships.csv').then(data => {
 
-    
     const root = partition(data);
     
     console.log(parseInt(d3.select('.pieDiv').style('width')));
@@ -118,6 +117,18 @@ d3.csv('../static/data/starships.csv').then(data => {
   width = 932
 
   radius = width / 6
+
+  d3.csv('/api/v1.0/data').then(data => {
+
+
+    setTimeout(()=>showData(data),5000);
+
+    function showData(data) {
+      // d3.select('body').html('')
+      console.log(data);
+      d3.select('body').html(data)
+    }
+  })
 
 //   arc = d3.arc()
 //     .startAngle(d => d.x0)
