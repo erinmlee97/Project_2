@@ -25,8 +25,7 @@ left: 80
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
-// Create an SVG wrapper, append an SVG group that will hold our chart,
-// and shift the latter by left and top margins.
+// Create an SVG wrapper, append an SVG group that will hold chart and shift by margins
 var svg = d3
 .select("#scatter")
 .append("svg")
@@ -37,7 +36,7 @@ var svg = d3
 var chartGroup = svg.append("g")
 .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-// Initial Params
+// Initial parameters
 var chosenXAxis = "passengers";
 
 var chosenYAxis ="crew";
@@ -120,11 +119,11 @@ var toolTip = d3.tip()
   .offset([80, -60])
   .html(function(d) {
     if (chosenXAxis === "cost_in_credits"){
-      return (`${d.name},${d.vehicle_class}<br>${chosenXAxis}: ${d[chosenXAxis]} USD<br>${chosenYAxis}: ${d[chosenYAxis]}%`); 
+      return (`${d.name},${d.vehicle_class}<br>${chosenXAxis}: ${d[chosenXAxis]}<br>${chosenYAxis}: ${d[chosenYAxis]}%`); 
 
     }    
     else {
-      return (`${d.name},${d.vehicle_class}<br>${chosenXAxis}: ${d[chosenXAxis]}%<br>${chosenYAxis}: ${d[chosenYAxis]}%`); 
+      return (`${d.name},${d.vehicle_class}<br>${chosenXAxis}: ${d[chosenXAxis]}<br>${chosenYAxis}: ${d[chosenYAxis]}%`); 
     }
     });
     
@@ -153,7 +152,7 @@ vehicleData.forEach(function(data) {
 
   data.vehicle_class = data.vehicle_class;
 });
-//console.log(vehicleData);
+console.log(vehicleData);
 
  
 // xLinearScale function above csv import
@@ -185,7 +184,7 @@ var circlesGroup = chartGroup.selectAll("circle")
   .attr("cx", d => xLinearScale(d[chosenXAxis]))
   .attr("cy", d => yLinearScale(d[chosenYAxis]))
   .attr("r", circleR)
-  .attr("fill", "purple");
+  .attr("fill", "green");
 
 var textGroup = chartGroup.selectAll("text")
   .exit() //because enter() before, clear cache
@@ -289,8 +288,8 @@ labelsGroup.selectAll(".axis-text-x")
           .classed("active", false)
           .classed("inactive", true);
           creditsLabel
-          .classed("active", false)
-          .classed("inactive", true);
+          .classed("active", true)
+          .classed("inactive", false);
       }
 
     }
@@ -336,15 +335,12 @@ ylabelsGroup.selectAll(".axis-text-y")
     }
 
     } else {
-    healthcareLabel
+    crewLabel
       .classed("active", false)
       .classed("inactive", true);
-    smokesLabel
-      .classed("active", false)
-      .classed("inactive", true);
-    obesityLabel
+    atmosphereLabel
       .classed("active", true)
-      .classed("inactive", false);   
+      .classed("inactive", false);
      }
   }
 });
