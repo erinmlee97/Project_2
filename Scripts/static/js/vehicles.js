@@ -292,7 +292,7 @@ labelsGroup.selectAll(".axis-text-x")
           .classed("inactive", false);
       }
 
-    }
+    })
   });
 
 
@@ -342,7 +342,7 @@ ylabelsGroup.selectAll(".axis-text-y")
       .classed("active", true)
       .classed("inactive", false);
      }
-  }
+  })
 });
 });
 
