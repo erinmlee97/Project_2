@@ -1,0 +1,22 @@
+name,rotation_period,orbital_period,diameter,climate,gravity,terrain,surface_water,population
+Tatooine,23,304,10465,arid,1 standard,desert,1,200000
+Alderaan,24,364,12500,temperate,1 standard,"grasslands, mountains",40,2000000000
+Yavin IV,24,4818,10200,"temperate, tropical",1 standard,"jungle, rainforests",8,1000
+Bespin,12,5110,118000,temperate,"1.5 (surface), 1 standard (Cloud City)",gas giant,0,6000000
+Endor,18,402,4900,temperate,0.85 standard,"forests, mountains, lakes",8,30000000
+Naboo,26,312,12120,temperate,1 standard,"grassy hills, swamps, forests, mountains",12,4500000000
+Kamino,27,463,19720,temperate,1 standard,ocean,100,1000000000
+Geonosis,30,256,11370,"temperate, arid",0.9 standard,"rock, desert, mountain, barren",5,100000000000
+Utapau,27,351,12900,"temperate, arid, windy",1 standard,"scrublands, savanna, canyons, sinkholes",0.9,95000000
+Mustafar,36,412,4200,hot,1 standard,"volcanoes, lava rivers, mountains, caves",0,20000
+Kashyyyk,26,381,12765,tropical,1 standard,"jungle, forests, lakes, rivers",60,45000000
+Polis Massa,24,590,0,artificial temperate ,0.56 standard,airless asteroid,0,1000000
+Corellia,25,329,11000,temperate,1 standard,"plains, urban, hills, forests",70,3000000000
+Rodia,29,305,7549,hot,1 standard,"jungles, oceans, urban, swamps",60,1300000000
+Ord Mantell,26,334,14050,temperate,1 standard,"plains, seas, mesas",10,4000000000
+Mon Cala,21,398,11030,temperate,1,"oceans, reefs, islands",100,27000000000
+Chandrila,20,368,13500,temperate,1,"plains, forests",40,1200000000
+Sullust,20,263,12780,superheated,1,"mountains, volcanoes, rocky deserts",5,18500000000
+Ryloth,30,305,10600,"temperate, arid, subartic",1,"mountains, valleys, deserts, tundra",5,1500000000
+Glee Anselm,33,206,15600,"tropical, temperate",1,"lakes, islands, swamps, seas",80,500000000
+Muunilinst,28,412,13800,temperate,1,"plains, forests, hills, mountains",25,5000000000
