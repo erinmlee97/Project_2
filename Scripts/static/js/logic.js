@@ -1,4 +1,7 @@
 var baseUrl = "https://swapi.dev/api/";
+<<<<<<< HEAD
+var planeturl = "planets/"
+=======
 var planetsUrl = "planets/"
 
 
@@ -15,4 +18,5 @@ d3.json(baseUrl + planetsUrl).then(function(data){
     console.log(orb_periods);
     
 });
+>>>>>>> main
 

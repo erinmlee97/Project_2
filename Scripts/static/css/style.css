@@ -1,0 +1,31 @@
+.iframeContainer {
+    padding: 30px;
+    border: 5px solid #e3e3e3;
+  }
+  
+  /* Sticky Footer rules (https://getbootstrap.com/examples/sticky-footer/) */
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  
+  body {
+    /* Padding bottom by footer height */
+    padding-bottom: 80px;
+  }
+  
+  .tooltip {
+    position: absolute;
+    width: 135px;
+    height: 60px;
+    padding: 2px;
+    padding-top: 8px;
+    font: 12px sans-serif;
+    color: white;
+    text-align: center;
+    background: #ba9aeb;
+    border: 0;
+    border-radius: 10px;
+  }
+
+  
