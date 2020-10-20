@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 mongo = PyMongo(app, uri = "mongodb://localhost:27017/star_wars_app")
 
-p_csv = "C:/Users/flurp/Desktop/Bootcamp/Project_2/Scripts/static/data/planets.csv"
+p_csv = "static/data/planets.csv"
 
 ###### mongo db ##########
 p_df = pd.read_csv(p_csv)
