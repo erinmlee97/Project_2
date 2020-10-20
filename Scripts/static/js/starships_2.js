@@ -16,10 +16,10 @@ function makeResponsive() {
   var textsize = parseInt(svgWidth*0.009);
   
   var margin = {
-  top: 20,
+  top: 40,
   right: 40,
   bottom: 100,
-  left: 80
+  left: 100
   };
   
   var width = svgWidth - margin.left - margin.right;
@@ -88,8 +88,7 @@ function makeResponsive() {
   return yAxis;
   }
   
-  // function used for updating circles group and text group with a transition to
-  // new circles
+  // function used for updating circles and text group
   function renderCircles(circlesGroup, newXScale, newYScale,chosenXAxis,chosenYAxis) {
   
   circlesGroup.transition()
@@ -116,7 +115,7 @@ function makeResponsive() {
   
   var toolTip = d3.tip()
     .attr("class", "tooltip")
-    .offset([80, -60])
+    .offset([90, 90])
     .html(function(d) {
       if (chosenXAxis === "passengers"){
         return (`${d.name}<br>${chosenXAxis}: ${d[chosenXAxis]}<br>${chosenYAxis}: ${d[chosenYAxis]}%`); 
@@ -183,7 +182,7 @@ function makeResponsive() {
     .attr("cx", d => xLinearScale(d[chosenXAxis]))
     .attr("cy", d => yLinearScale(d[chosenYAxis]))
     .attr("r", circleR)
-    .attr("fill", "teal");
+    .attr("fill", "gold");
   
   var textGroup = chartGroup.selectAll("text")
     .exit()
@@ -225,7 +224,7 @@ function makeResponsive() {
   var ylabelsGroup = chartGroup.append("g");
   
   var hyperdrive_ratingLabel = ylabelsGroup.append("text")
-    .attr("transform", `translate(-40,${height / 2})rotate(-90)`)
+    .attr("transform", `translate(-60,${height / 2})rotate(-90)`)
     .attr("dy", "1em")
     .attr("class","axis-text-y")
     .classed("axis-text", true)
@@ -234,7 +233,7 @@ function makeResponsive() {
     .text("Hyperdrive Rating");
   
   var max_atmosphering_speedLabel = ylabelsGroup.append("text")
-    .attr("transform", `translate(-60,${height / 2})rotate(-90)`)
+    .attr("transform", `translate(-80,${height / 2})rotate(-90)`)
     .attr("dy", "1em")
     .attr("class","axis-text-y")
     .attr("value", "max_atmosphering_speed") 
@@ -253,7 +252,6 @@ function makeResponsive() {
   
         console.log(chosenXAxis)
   
-        // functions here found above csv import
         // updates x scale for new data
         xLinearScale = xScale(starshipsData, chosenXAxis);
         // updates y scale for new data
@@ -304,7 +302,6 @@ function makeResponsive() {
   
       console.log(chosenYAxis)
   
-     // functions here found above csv import
      // updates x scale for new data
      xLinearScale = xScale(starshipsData, chosenXAxis);
      // updates y scale for new data
