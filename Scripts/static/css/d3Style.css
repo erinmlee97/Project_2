@@ -22,6 +22,7 @@
     fill: #000;
     cursor: pointer;
   }
+
   
   /* font size dependent on radius, see app.js */
   .planetText {
@@ -30,9 +31,8 @@
     text-anchor: middle;
   }
   
-  .planetCircle {
-    fill: rgb(246, 246, 105);
-    stroke: #e3e3e3;
+  .title{
+      text-align: center;
   }
   
   .chart {
@@ -40,7 +40,7 @@
     margin: 0;
   }
   
-  .d3-tip {
+  .tooltip {
     padding: 6px;
     font-size: 12px;
     line-height: 1;
@@ -51,6 +51,11 @@
     background: rgba(0, 0, 0, 0.8);
     border-radius: 4px;
   }
+
+  .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color:lightblue;
+ }
+ 
   
   /* Mobile Rules */
   @media screen and (max-width: 530px) {
