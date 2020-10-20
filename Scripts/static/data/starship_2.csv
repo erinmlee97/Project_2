@@ -1,0 +1,18 @@
+,name,model,manufacturer,cost_in_credits,length,max_atmosphering_speed,crew,passengers,cargo_capacity,consumables,hyperdrive_rating,MGLT,starship_class
+0,CR90 corvette,CR90 corvette,Corellian Engineering Corporation,3500000,150,950,30-165,600,3000000,1 year,2.0,60,corvette
+1,Star Destroyer,Imperial I-class Star Destroyer,Kuat Drive Yards,150000000,"1,600",975,"47,060",,36000000,2 years,2.0,60,Star Destroyer
+2,Sentinel-class landing craft,Sentinel-class landing craft,"Sienar Fleet Systems, Cyngus Spaceworks",240000,38,1000,5,75,180000,1 month,1.0,70,landing craft
+3,Death Star,DS-1 Orbital Battle Station,"Imperial Department of Military Research, Sienar Fleet Systems",1000000000000,120000,,"342,953","843,342",1000000000000,3 years,4.0,10,Deep Space Mobile Battlestation
+4,Millennium Falcon,YT-1300 light freighter,Corellian Engineering Corporation,100000,34.37,1050,4,6,100000,2 months,0.5,75,Light freighter
+5,Y-wing,BTL Y-wing,Koensayr Manufacturing,134999,14,1000km,2,0,110,1 week,1.0,80,assault starfighter
+6,X-wing,T-65 X-wing,Incom Corporation,149999,12.5,1050,1,0,110,1 week,1.0,100,Starfighter
+7,TIE Advanced x1,Twin Ion Engine Advanced x1,Sienar Fleet Systems,unknown,9.2,1200,1,0,150,5 days,1.0,105,Starfighter
+8,Executor,Executor-class star dreadnought,"Kuat Drive Yards, Fondor Shipyards",1143350000,19000,,"279,144",38000,250000000,6 years,2.0,40,Star dreadnought
+9,Rebel transport,GR-75 medium transport,"Gallofree Yards, Inc.",unknown,90,650,6,90,19000000,6 months,4.0,20,Medium transport
+10,Slave 1,Firespray-31-class patrol and attack,Kuat Systems Engineering,unknown,21.5,1000,1,6,70000,1 month,3.0,70,Patrol craft
+11,Imperial shuttle,Lambda-class T-4a shuttle,Sienar Fleet Systems,240000,20,850,6,20,80000,2 months,1.0,50,Armed government transport
+12,EF76 Nebulon-B escort frigate,EF76 Nebulon-B escort frigate,Kuat Drive Yards,8500000,300,800,854,75,6000000,2 years,2.0,40,Escort ship
+13,Calamari Cruiser,MC80 Liberty type Star Cruiser,Mon Calamari shipyards,104000000,1200,,5400,1200,unknown,2 years,1.0,60,Star Cruiser
+14,A-wing,RZ-1 A-wing Interceptor,"Alliance Underground Engineering, Incom Corporation",175000,9.6,1300,1,0,40,1 week,1.0,120,Starfighter
+15,B-wing,A/SF-01 B-wing starfighter,Slayn & Korpil,220000,16.9,950,1,0,45,1 week,2.0,91,Assault Starfighter
+32,arc-170,Aggressive Reconnaissance-170 starfighte,"Incom Corporation, Subpro Corporation",155000,14.5,1000,3,0,110,5 days,1.0,100,starfighter
