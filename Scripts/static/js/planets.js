@@ -16,10 +16,10 @@ function makeResponsive() {
   var textsize = parseInt(svgWidth*0.009);
   
   var margin = {
-  top: 20,
+  top: 40,
   right: 40,
   bottom: 100,
-  left: 80
+  left: 100
   };
   
   var width = svgWidth - margin.left - margin.right;
@@ -35,6 +35,7 @@ function makeResponsive() {
   // Append an SVG group
   var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
   
   // Initial parameters
   var chosenXAxis = "population";
@@ -50,7 +51,6 @@ function makeResponsive() {
     .range([0, width]);
   
   return xLinearScale;
-  
   }
   
   // function used for updating y-scale var upon click on axis label
@@ -62,8 +62,6 @@ function makeResponsive() {
     .range([height, 0]);
   
   return yLinearScale;
-  
-  
   }
   
   // function used for updating xAxis var upon click on axis label
@@ -116,7 +114,7 @@ function makeResponsive() {
   
   var toolTip = d3.tip()
     .attr("class", "tooltip")
-    .offset([80, -60])
+    .offset([90, 90])
     .html(function(d) {
       if (chosenXAxis === "population"){
         return (`${d.name}<br>${chosenXAxis}: ${d[chosenXAxis]}<br>${chosenYAxis}: ${d[chosenYAxis]}%`); 
@@ -195,9 +193,9 @@ function makeResponsive() {
     .attr("y", d => yLinearScale(d[chosenYAxis]))
     .attr("font-size", textsize+"px")
     .attr("text-anchor", "middle")
-    .attr("class","stateText");
+    .attr("class","planetText");
   
-  circlesGroup = updateToolTip(chosenXAxis, chosenYAxis,circlesGroup);
+  circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
   
   
   // Create group for x-axis labels
@@ -225,7 +223,7 @@ function makeResponsive() {
   var ylabelsGroup = chartGroup.append("g");
   
   var rotationLabel = ylabelsGroup.append("text")
-    .attr("transform", `translate(-40,${height / 2})rotate(-90)`)
+    .attr("transform", `translate(-60,${height / 2})rotate(-90)`)
     .attr("dy", "1em")
     .attr("class","axis-text-y")
     .classed("axis-text", true)
@@ -234,7 +232,7 @@ function makeResponsive() {
     .text("Rotation Period");
   
   var orbitalLabel = ylabelsGroup.append("text")
-    .attr("transform", `translate(-60,${height / 2})rotate(-90)`)
+    .attr("transform", `translate(-80,${height / 2})rotate(-90)`)
     .attr("dy", "1em")
     .attr("class","axis-text-y")
     .attr("value", "orbital_period") // value to grab for event listener
@@ -272,8 +270,8 @@ function makeResponsive() {
         circlesGroup = updateToolTip(chosenXAxis, chosenYAxis,circlesGroup);
   
         // changes classes to change bold text
-        if (chosenXAxis === "orbital_period") {
-          orbitalLabel
+        if (chosenXAxis === "population") {
+          populationLabel
             .classed("active", true)
             .classed("inactive", false);
           diameterLabel
@@ -282,7 +280,7 @@ function makeResponsive() {
             
         }
         else {
-          orbitalLabel
+          populationLabel
             .classed("active", false)
             .classed("inactive", true);
           diameterLabel
@@ -291,8 +289,7 @@ function makeResponsive() {
         }
     }
     })
-  
-  
+
   // y axis labels event listener
   ylabelsGroup.selectAll(".axis-text-y")
     .on("click", function() {
@@ -321,21 +318,19 @@ function makeResponsive() {
      circlesGroup = updateToolTip(chosenXAxis, chosenYAxis,circlesGroup);
   
        
-     if (chosenYAxis === "crew") {
+     if (chosenYAxis === "rotation_period") {
       rotationLabel
         .classed("active", true)
         .classed("inactive", false);
-      populationLabel
+      orbitalLabel
         .classed("active", false)
         .classed("inactive", true);
-  
       }
-  
-      } else {
+      }else {
       rotationLabel
         .classed("active", false)
         .classed("inactive", true);
-      populationLabel
+      orbitalLabel
         .classed("active", true)
         .classed("inactive", false);
        }
@@ -385,3 +380,33 @@ d3.csv('../static/data/planets.csv').then(function(planetData) {
   }).catch(function(error) {        //catches errors
     console.log(error);
   });
+
+  var orbitalBar = '../static/images/orbital.png'
+  var rotationBar = '../static/images/rotation.png'
+  var popBar= '../static/images/population.png'
+  var diaBar= '../static/images/diameter.png'
+
+  var orbitalButton = d3.select("#orbital");
+  var rotationButton = d3.select("#rotation");
+  var popButton = d3.select("#population");
+  var diaButton = d3.select("#diameter");
+
+  orbitalButton.on("click", function() {
+    d3.select(".bar").html(`<img src=${orbitalBar} alt='...'>`);
+  });
+
+  rotationButton.on("click", function() {
+    d3.select(".bar").html(`<img src=${rotationBar} alt='...'>`);
+  });
+
+  popButton.on("click", function() {
+    d3.select(".bar").html(`<img src=${popBar} alt='...'>`);
+  });
+
+  diaButton.on("click", function() {
+    d3.select(".bar").html(`<img src=${diaBar} alt='...'>`);
+  });
+
+
+  
+
