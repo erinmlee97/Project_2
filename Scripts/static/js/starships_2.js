@@ -182,7 +182,7 @@ function makeResponsive() {
     .attr("cx", d => xLinearScale(d[chosenXAxis]))
     .attr("cy", d => yLinearScale(d[chosenYAxis]))
     .attr("r", circleR)
-    .attr("fill", "gold");
+    .attr("fill", "lightblue");
   
   var textGroup = chartGroup.selectAll("text")
     .exit()
@@ -194,7 +194,7 @@ function makeResponsive() {
     .attr("y", d => yLinearScale(d[chosenYAxis]))
     .attr("font-size", textsize+"px")
     .attr("text-anchor", "middle")
-    .attr("class","stateText");
+    .attr("class","starshipText");
   
   circlesGroup = updateToolTip(chosenXAxis, chosenYAxis,circlesGroup);
   
@@ -344,3 +344,59 @@ function makeResponsive() {
   
   // When the browser window is resized, makeResponsive() is called.
   d3.select(window).on("resize", makeResponsive);
+
+
+  // Use d3 to pull in data
+d3.csv('../static/data/starship_2.csv').then(function(starshipData) {
+    var names = starshipData.map(data => data.name);
+    var models = starshipData.map(data => data.model);
+    var manufacturers = starshipData.map(data => data.manufacturer);
+    var costs = starshipData.map(data => data.cost_in_credits);
+
+  
+    // Cast each hours value in starshipData as a number using the unary + operator
+    starshipData.forEach(function(data) {
+      data.max_atmosphering_speed = +data.max_atmosphering_speed;       
+      data.hyperdrive_rating = +data.hyperdrive_rating;
+      data.passengers = +data.passengers;
+      data.MGLT = +data.MGLT;
+    });
+
+    // Use d3 to select the table body to append the data to the table
+    d3.select("tbody")
+        .selectAll("tr")
+        .data(starshipData)
+        .enter()
+        .append("tr")
+        .html(function(d) {
+            return `<td>${d.name}</td><td>${d.model}</td><td>${d.manufacturer}</td><td>${d.cost_in_credits}</td>`;
+        });
+  }).catch(function(error) {        //catches errors
+    console.log(error);
+  });
+
+  var hyperdrive_bar = '../static/images/hyperdrive.png'
+  var max_bar = '../static/images/max.png'
+  var mglt_bar= '../static/images/mglt.png'
+//   var passengers_bar= '../static/images/passengers.png'
+
+  var hyperdrive_button = d3.select("#hyperdrive");
+  var max_button = d3.select("#max");
+  var mglt_button = d3.select("#mglt");
+//   var passengers_button = d3.select("#passengers");
+
+  hyperdrive_button.on("click", function() {
+    d3.select(".bar").html(`<img src=${hyperdrive_bar} alt='...'>`);
+  });
+
+  max_button.on("click", function() {
+    d3.select(".bar").html(`<img src=${max_bar} alt='...'>`);
+  });
+
+  mglt_button.on("click", function() {
+    d3.select(".bar").html(`<img src=${mglt_bar} alt='...'>`);
+  });
+
+// //   passengers_button.on("click", function() {
+// //     d3.select(".bar").html(`<img src=${passengers_bar} alt='...'>`);
+//   });
