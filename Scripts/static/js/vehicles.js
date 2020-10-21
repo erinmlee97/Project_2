@@ -12,7 +12,7 @@ function makeResponsive() {
   var svgHeight = svgWidth*0.65;
 
   // circle and text size are changed based on window resizing
-  var circleR = svgWidth*0.012; 
+  var circleR = svgWidth*0.02; 
   var textsize = parseInt(svgWidth*0.009);
 
   var margin = {
@@ -45,8 +45,8 @@ function makeResponsive() {
   function xScale(vehicleData, chosenXAxis) {
   // create scales
   var xLinearScale = d3.scaleLinear()
-    .domain([d3.min(vehicleData, d => d[chosenXAxis]) * 0.8,
-      d3.max(vehicleData, d => d[chosenXAxis]) * 1.2])
+    .domain([d3.min(vehicleData, d => d[chosenXAxis]),
+      d3.max(vehicleData, d => d[chosenXAxis])])
     .range([0, width]);
 
   return xLinearScale;
@@ -56,11 +56,13 @@ function makeResponsive() {
   function yScale(vehicleData, chosenYAxis) {
   // create scales
   var yLinearScale = d3.scaleLinear()
-    .domain([d3.min(vehicleData, d => d[chosenYAxis]) * 0.8,
-      d3.max(vehicleData, d => d[chosenYAxis]) * 1.2])
+    .domain([d3.min(vehicleData, d => d[chosenYAxis]),
+      d3.max(vehicleData, d => d[chosenYAxis])])
     .range([height, 0]);
 
   return yLinearScale;
+
+
   }
 
   // function used for updating xAxis var upon click on axis label
@@ -113,14 +115,14 @@ function makeResponsive() {
 
   var toolTip = d3.tip()
     .attr("class", "tooltip")
-    .offset([80, -60])
+    .offset([90, 90])
     .html(function(d) {
-      if (chosenXAxis === "cost_in_credits"){
-        return (`${d.name},${d.vehicle_class}<br>${chosenXAxis}: ${d[chosenXAxis]}<br>${chosenYAxis}: ${d[chosenYAxis]}%`); 
+      if (chosenXAxis === "passengers"){
+        return (`${d.name},${chosenXAxis}<br>${chosenXAxis}: ${d[chosenXAxis]}<br>${chosenYAxis}: ${d[chosenYAxis]}%`); 
 
       }    
       else {
-        return (`${d.name},${d.vehicle_class}<br>${chosenXAxis}: ${d[chosenXAxis]}<br>${chosenYAxis}: ${d[chosenYAxis]}%`); 
+        return (`${d.name},${chosenXAxis}<br>${chosenXAxis}: ${d[chosenXAxis]}<br>${chosenYAxis}: ${d[chosenYAxis]}%`); 
       }
       });
     
@@ -137,17 +139,17 @@ function makeResponsive() {
   }
 
   // Retrieve data from the CSV file and execute everything below
-  d3.csv("../data/clean_vehicles.csv").then(function(vehicleData) {
+  d3.csv("../static/data/clean_vehicles.csv").then(function(vehicleData) {
   // parse data
   vehicleData.forEach(function(data) {
 
     data.passengers = +data.passengers;
     data.crew = +data.crew;
 
-    data.cost_in_credits = +cost_in_credits;
+    data.cost_in_credits = +data.cost_in_credits;
     data.max_atmosphering_speed = +data.max_atmosphering_speed;
 
-    data.vehicle_class = data.vehicle_class;
+
   });
   console.log(vehicleData);
 
@@ -206,17 +208,17 @@ function makeResponsive() {
     .attr("x", 0)
     .attr("y", 20)
     .attr("class","axis-text-x")
-    .attr("value", "poverty") // value to grab for event listener
+    .attr("value", "passengers") // value to grab for event listener
     .classed("active", true)
-    .text("In Poverty (%)");
+    .text("Number of Passengers");
 
   var creditsLabel = labelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 40)
     .attr("class","axis-text-x")
-    .attr("value", "age") // value to grab for event listener
+    .attr("value", "cost_in_credits") // value to grab for event listener
     .classed("inactive", true)
-    .text("Age (Median)");
+    .text("Cost in Credits");
 
   // Create group for y-axis labels
 
@@ -227,17 +229,17 @@ function makeResponsive() {
     .attr("dy", "1em")
     .attr("class","axis-text-y")
     .classed("axis-text", true)
-    .attr("value", "healthcare") // value to grab for event listener
+    .attr("value", "crew") // value to grab for event listener
     .classed("active", true)
-    .text("Lack of Healthcare (%)");
+    .text("Crew");
 
   var atmosphereLabel = ylabelsGroup.append("text")
     .attr("transform", `translate(-60,${height / 2})rotate(-90)`)
     .attr("dy", "1em")
     .attr("class","axis-text-y")
-    .attr("value", "smokes") // value to grab for event listener
+    .attr("value", "max_atmosphering_speed") // value to grab for event listener
     .classed("inactive", true)
-    .text("Smokes (%)");
+    .text("Max Atmosphering Speed");
 
   // x axis labels event listener
   labelsGroup.selectAll(".axis-text-x")
@@ -339,7 +341,7 @@ function makeResponsive() {
         .classed("active", true)
         .classed("inactive", false);
         }
-    }):
+    })
 
 })
 }
