@@ -139,7 +139,7 @@ function makeResponsive() {
   }
 
   // Retrieve data from the CSV file and execute everything below
-  d3.csv("../static/data/clean_vehicles.csv").then(function(vehicleData) {
+  d3.json("/data/clean_vehicles").then(function(vehicleData) {
   // parse data
   vehicleData.forEach(function(data) {
 
