@@ -123,7 +123,7 @@ def planet_data():
     ]
 
     # results of query
-    results = db.session.query(planets).all()
+    results = db.session.query(*sel)
 
     info = []
 
