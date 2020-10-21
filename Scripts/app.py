@@ -143,6 +143,9 @@ def planet_data():
         info.append(planet_info)
     return jsonify(info)
 
+@app.route('/data/species')
+def species_data():
+    return "hello world"
 if __name__ == "__main__":
     app.run(debug=True)
 
