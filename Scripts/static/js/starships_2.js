@@ -182,7 +182,7 @@ function makeResponsive() {
     .attr("cx", d => xLinearScale(d[chosenXAxis]))
     .attr("cy", d => yLinearScale(d[chosenYAxis]))
     .attr("r", circleR)
-    .attr("fill", "lightblue");
+    .attr("fill", "lightgreen");
   
   var textGroup = chartGroup.selectAll("text")
     .exit()
@@ -378,12 +378,12 @@ d3.csv('../static/data/starship_2.csv').then(function(starshipData) {
   var hyperdriveBar = '../static/images/hyperdrive.png'
   var maxBar = '../static/images/max.png'
   var mgltBar= '../static/images/mglt.png'
-//   var passengers_bar= '../static/images/passengers.png'
-
+  var passengersBar= '../static/images/passengers.png'
+// 
   var hyperdriveButton = d3.select("#hyperdrive");
   var maxButton = d3.select("#max");
   var mgltButton = d3.select("#mglt");
-//   var passengers_button = d3.select("#passengers");
+  var passengersButton = d3.select("#passengers");
 
   hyperdriveButton.on("click", function() {
     d3.select(".bar").html(`<img src=${hyperdriveBar} alt='...'>`);
