@@ -114,7 +114,7 @@
 //       (root);
 //   }
 
-//   color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1))
+  color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1))
 
 //   format = d3.format(",d")
 
