@@ -105,6 +105,7 @@ def vehicles():
 
 # Routes to query database for data
 
+#from planet.csv
 @app.route('/data/planets')
 def planet_data():
     
@@ -145,7 +146,42 @@ def planet_data():
 
 @app.route('/data/species')
 def species_data():
-    return "hello world"
+    # selection to query from db
+    sel = [
+        species().index,
+        species().classification,
+        species().name,
+        species().designation,
+        species().average_height,
+        species().skin_colors,
+        species().hair_colors,
+        species().eye_colors,
+        species().average_lifespan,
+        species().language
+    ]
+    print(species())
+    # results of query
+    results = db.session.query(*sel)
+
+    info = []
+
+    for result in results:
+        species_info = {
+            "index": result[0],
+            "name": result[1],
+            "classification": result[2],
+            "designation": result[3],
+            "average_height": result[4],
+            "skin_colors": result[5],
+            "hair_colors": result[6],
+            "eye_colors": result[7],
+            "average_lifespan": result[8],
+            "language": result[9]
+        }
+        info.append(species_info)
+    print(info)
+    return jsonify(info)
+
 if __name__ == "__main__":
     app.run(debug=True)
 

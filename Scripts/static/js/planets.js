@@ -138,7 +138,7 @@ function makeResponsive() {
   }
   
   // Retrieve data from the CSV file and execute everything below
-  d3.csv("/data/planets").then(function(planetsData) {
+  d3.csv("../data/clean_planets.csv").then(function(planetsData) {
   // parse data
   planetsData.forEach(function(data) {
   
