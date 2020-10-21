@@ -217,7 +217,7 @@ function makeResponsive() {
     .attr("class","axis-text-x")
     .attr("value", "MGLT") 
     .classed("inactive", true)
-    .text("MGLT");
+    .text("Megalights (MGLT)");
   
   // Create group for y-axis labels
   
@@ -230,7 +230,7 @@ function makeResponsive() {
     .classed("axis-text", true)
     .attr("value", "hyperdrive_rating") 
     .classed("active", true)
-    .text("Hyperdrive Rating");
+    .text("Hyperdrive Rating (%)");
   
   var max_atmosphering_speedLabel = ylabelsGroup.append("text")
     .attr("transform", `translate(-80,${height / 2})rotate(-90)`)
@@ -375,28 +375,28 @@ d3.csv('../static/data/starship_2.csv').then(function(starshipData) {
     console.log(error);
   });
 
-  var hyperdrive_bar = '../static/images/hyperdrive.png'
-  var max_bar = '../static/images/max.png'
-  var mglt_bar= '../static/images/mglt.png'
+  var hyperdriveBar = '../static/images/hyperdrive.png'
+  var maxBar = '../static/images/max.png'
+  var mgltBar= '../static/images/mglt.png'
 //   var passengers_bar= '../static/images/passengers.png'
 
-  var hyperdrive_button = d3.select("#hyperdrive");
-  var max_button = d3.select("#max");
-  var mglt_button = d3.select("#mglt");
+  var hyperdriveButton = d3.select("#hyperdrive");
+  var maxButton = d3.select("#max");
+  var mgltButton = d3.select("#mglt");
 //   var passengers_button = d3.select("#passengers");
 
-  hyperdrive_button.on("click", function() {
-    d3.select(".bar").html(`<img src=${hyperdrive_bar} alt='...'>`);
+  hyperdriveButton.on("click", function() {
+    d3.select(".bar").html(`<img src=${hyperdriveBar} alt='...'>`);
   });
 
-  max_button.on("click", function() {
-    d3.select(".bar").html(`<img src=${max_bar} alt='...'>`);
+  maxButton.on("click", function() {
+    d3.select(".bar").html(`<img src=${maxBar} alt='...'>`);
   });
 
-  mglt_button.on("click", function() {
-    d3.select(".bar").html(`<img src=${mglt_bar} alt='...'>`);
+  mgltButton.on("click", function() {
+    d3.select(".bar").html(`<img src=${mgltBar} alt='...'>`);
   });
 
-// //   passengers_button.on("click", function() {
-// //     d3.select(".bar").html(`<img src=${passengers_bar} alt='...'>`);
-//   });
+  passengersButton.on("click", function() {
+    d3.select(".bar").html(`<img src=${passengersBar} alt='...'>`);
+  });
