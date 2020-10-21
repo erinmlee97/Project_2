@@ -55,10 +55,6 @@
   .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
     background-color:lightblue;
  }
-
- button{
-   background-color: lightblue;
- }
  
   
   /* Mobile Rules */
@@ -77,5 +73,3 @@
       font-size: 13px;
     }
   }
-
-  
