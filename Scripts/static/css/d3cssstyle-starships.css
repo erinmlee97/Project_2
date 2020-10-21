@@ -25,7 +25,7 @@
 
   
   /* font size dependent on radius, see app.js */
-  .planetText {
+  .starshipText {
     font-family: sans-serif;
     fill: #fff;
     text-anchor: middle;
@@ -55,15 +55,11 @@
   .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
     background-color:lightblue;
  }
-
- button{
-   background-color: lightblue;
- }
  
   
   /* Mobile Rules */
   @media screen and (max-width: 530px) {
-    .planetText {
+    .starshipText {
       display: none;
     }
   
@@ -77,5 +73,3 @@
       font-size: 13px;
     }
   }
-
-  
