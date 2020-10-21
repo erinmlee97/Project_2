@@ -41,7 +41,7 @@ clean_planets_df = pd.read_csv(clean_planets_csv)
 ##############################################
 # Connect flask app to database (SQLAlchemy)
 ##############################################
-app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///C:/Users/flurp/Desktop/Bootcamp/Project_2/star_wars_db.sqlite'
+app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///star_wars_db.sqlite'
 db = SQLAlchemy(app)
 
 ## create reflection
