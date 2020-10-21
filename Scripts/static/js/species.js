@@ -1,5 +1,5 @@
 // Use d3 to pull in data
-d3.csv('../data/species.csv').then(function(speciesData) {
+d3.csv('../data/clean_species.csv').then(function(speciesData) {
     var names = speciesData.map(data => data.name);
     var lifespan = speciesData.map(data => data.average_lifespan);
     var height = speciesData.map(data => data.average_height);
