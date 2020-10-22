@@ -139,7 +139,7 @@ function makeResponsive() {
   }
   
   // Retrieve data from the CSV file and execute everything below
-  d3.csv("../static/data/starship_2.csv").then(function(starshipsData) {
+  d3.json("/data/starship_2").then(function(starshipsData) {
   // parse data
   starshipsData.forEach(function(data) {
   
@@ -347,7 +347,7 @@ function makeResponsive() {
 
 
   // Use d3 to pull in data
-d3.csv('../static/data/starship_2.csv').then(function(starshipData) {
+d3.json('/data/starship').then(function(starshipData) {
     var names = starshipData.map(data => data.name);
     var models = starshipData.map(data => data.model);
     var manufacturers = starshipData.map(data => data.manufacturer);
