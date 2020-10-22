@@ -136,34 +136,6 @@ def clean_planets_data():
         info.append(planet_info)
     return jsonify(info)
 
-#species table
-@app.route('/data/species')
-def species_data():
-    
-    species = Table('species', MetaData(engine), autoload=True, autoload_with=engine)
-    
-    session = Session(engine)
-    
-    results = session.query(species).all()
-
-    info = []
-    for result in results:
-        species_info = {
-            "index": result[0],
-            "name": result[1],
-            "classification": result[2],
-            "designation": result[3],
-            "average_height": result[4],
-            "skin_colors": result[5],
-            "hair_colors": result[6],
-            "eye_colors": result[7],
-            "average_lifespan": result[8],
-            "language": result[9]
-        }
-        info.append(species_info)
-    
-    return jsonify(info)
-
 #clean_species table
 @app.route('/data/clean_species')
 def clean_species_data():

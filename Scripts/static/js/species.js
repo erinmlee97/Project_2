@@ -1,6 +1,6 @@
 function makeResponsive() {
     // Use d3 to pull in data
-    d3.csv('../static/data/clean_species.csv').then(function(speciesData) {
+    d3.json('/data/clean_species').then(function(speciesData) {
         var names = speciesData.map(data => data.name);
         var lifespan = speciesData.map(data => data.average_lifespan);
         var height = speciesData.map(data => data.average_height);
@@ -24,3 +24,5 @@ function makeResponsive() {
     }).catch(function(error) {        //catches errors
         console.log(error);
     })};
+
+makeResponsive();
