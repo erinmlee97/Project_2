@@ -23,4 +23,4 @@ function makeResponsive() {
             });
     }).catch(function(error) {        //catches errors
         console.log(error);
-    });
+    })};
