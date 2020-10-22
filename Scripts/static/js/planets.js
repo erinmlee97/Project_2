@@ -138,7 +138,7 @@ function makeResponsive() {
   }
   
   // Retrieve data from the CSV file and execute everything below
-  d3.csv("/data/planets").then(function(planetsData) {
+  d3.csv("../static/data/clean_planets.csv").then(function(planetsData) {
   // parse data
   planetsData.forEach(function(data) {
   
@@ -344,7 +344,7 @@ function makeResponsive() {
   d3.select(window).on("resize", makeResponsive);
 
 // Use d3 to pull in data
-d3.csv('/data/planets').then(function(planetData) {
+d3.csv('../static/data/planets.csv').then(function(planetData) {
     console.log(planetData);
     var names = planetData.map(data => data.name);
     var climate = planetData.map(data => data.climate);

@@ -20,6 +20,6 @@ d3.csv('../static/data/clean_species.csv').then(function(speciesData) {
         .html(function(d) {
             return `<td>${d.name}</td><td>${d.classification}</td><td>${d.language}</td><td>${d.average_height}</td><td>${d.average_lifespan}</td>`;
         });
-  }).catch(function(error) {        //catches errors
+  }).catch(function(error) {
     console.log(error);
-
+  })
