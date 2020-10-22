@@ -30,6 +30,8 @@ vehicles_csv = "./static/data/vehicles.csv"
 clean_planets_csv = "./static/data/clean_planets.csv"
 clean_species_csv = "./static/data/clean_species.csv"
 clean_vehicles_csv = "./static/data/clean_vehicles.csv"
+starship_2_csv = "./static/data/starship_2.csv"
+
 
 planets_df = pd.read_csv(planets_csv)
 species_df = pd.read_csv(species_csv)
@@ -38,6 +40,8 @@ vehicles_df = pd.read_csv(vehicles_csv)
 clean_planets_df = pd.read_csv(clean_planets_csv)
 clean_species_df = pd.read_csv(clean_species_csv)
 clean_vehicles_df = pd.read_csv(clean_vehicles_csv)
+starship_2_df = pd.read_csv(starship_2_csv)
+
 
 # Use pandas to convert dataframes to sql tables and push to database
 # planets_df.to_sql("planets", engine)
@@ -47,11 +51,12 @@ clean_vehicles_df = pd.read_csv(clean_vehicles_csv)
 # clean_planets_df.to_sql("clean_planets", engine)
 # clean_species_df.to_sql("clean_species", engine)
 # clean_vehicles_df.to_sql("clean_vehicles", engine)
+# starship_2_df.to_sql("starship_2", engine)
 
 
 
 ##############################################
-# Creating routes
+# Creating website routes
 ##############################################
 @app.route("/")
 def home():
@@ -73,7 +78,10 @@ def starships():
 def vehicles():
     return render_template("vehicles.html")
 
-# Routes to query database for data
+
+##############################################
+# Routes to query database
+##############################################
 
 #planet table
 @app.route('/data/planets')
@@ -212,7 +220,67 @@ def clean_vehicles_data():
     
     return jsonify(info)
 
+#starship table
+@app.route('/data/starship')
+def starship_data():
+    
+    starships = Table('starships', MetaData(engine), autoload=True, autoload_with=engine)
+    
+    session = Session(engine)
+    
+    results = session.query(starships).all()
+    
+    info = []
+    for result in results:
+        starships_info = {
+            "index": result[0],
+            "name": result[1],
+            "model": result[2],
+            "manufacturer": result[3],
+            "cost_in_credits": result[4],
+            "length": result[5],
+            "max_atmosphering_speed": result[6],
+            "crew": result[7],
+            "passengers": result[8],
+            "cargo_capacity": result[9],
+            "consumables": result[10],
+            "hyperdrive_rating": result[11],
+            "MGLT": result[12],
+            "starship_class": result[13]
+        }
+        info.append(starships_info)
+    return jsonify(info)
 
+#starship 2 table
+@app.route('/data/starship_2')
+def starship_2_data():
+    starship_2 = Table('starship_2', MetaData(engine), autoload=True, autoload_with=engine)
+    
+    session = Session(engine)
+    
+    results = session.query(starship_2).all()
+    
+    info = []
+    for result in results:
+        starships_2_info = {
+            "index": result[0],
+            "Unnamed: 0": result[1],
+            "name": result[2],
+            "model": result[3],
+            "manufacturer": result[4],
+            "cost_in_credits": result[5],
+            "length": result[6],
+            "max_atmosphering_speed": result[7],
+            "crew": result[8],
+            "passengers": result[9],
+            "cargo_capacity": result[10],
+            "consumables": result[11],
+            "hyperdrive_rating": result[12],
+            "MGLT": result[13],
+            "starship_class": result[14]
+        }
+        info.append(starships_2_info)
+    return jsonify(info)
 if __name__ == "__main__":
     
     app.run(debug=True)
